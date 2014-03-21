@@ -23,3 +23,23 @@ Much prettier, less obnoxious user interface that attempts to explain itself on 
 Well, never mind on that note, it still has the [mystery meat](http://en.wikipedia.org/wiki/Mystery_meat_navigation) [+] [~] and [-] buttons
 
 I was going to name the next version 2.1.0, but I noticed that it yet again changed the data model, so it's going to be 3.0.0.
+
+## Data
+
+From Link_Saver.html
+
+    1)	X: Object: {
+		      link.0:{
+			      link:[link],
+			      title:[title],
+			      removed[true/false]:
+		      },
+		      ...
+	      }
+    2)	LSPAR: Object: {
+		      key:[key], (this controls X)
+		      list:{
+			      [listitem]:[listitem],
+			      ...
+		      }
+	      }
