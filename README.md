@@ -43,10 +43,11 @@ All in all, this version is a huge mess. And the way links are stored in this ve
     anotherparadigm.7: "<a href="http://somesite.com/somepath">sometitle</a>"
     anotherparadigms: 8
 
-Yeah, I think you get the idea. Here's a screenshot:
+Yeah, I think you get the idea. In fact, it's actually _worse_ than that. I forgot that I also put the EDIT and DELETE link for each link in there as well. Here's a screenshot of the link saver with one link:
 
 ![Uh oh! Image didn't load.](console.png)
 
 Not to mention, if I remember correctly, the [DFE](http://www.urbandictionary.com/define.php?term=delete%20fucking%20everything) button didn't even delete all the storage items that the app created. Fail.
 
 Also, I totally forgot, this version didn't have "paradigms" yet. So the next version, version 1.1.0, is the one that's even more horrible and cluttered.
+sometitle
