@@ -4,7 +4,7 @@ The Link Saver is a project I made to replace bookmarks and provide a clean UI i
 
 ## What's new
 
-This version it a major improvement over the `1.x` versions. This begins the `2.x` branch of link saver because the data storage method was overhauled from the ground up to use JSON, meaning it is incompatible and thus, under semantic versioning, it gets a new major version.
+This version is a major improvement over the `1.x` versions. This begins the `2.x` branch of link saver because the data storage method was overhauled from the ground up to use JSON, meaning it is incompatible and thus, under semantic versioning, it gets a new major version.
 
 ## New Features
 
