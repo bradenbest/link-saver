@@ -4,6 +4,8 @@ The Link Saver is a project I made to replace bookmarks and provide a clean UI i
 
 This was the first version. It's horrible. Please don't use it.
 
+![](showcase.png)
+
 ## Why is this version horrible?
 
 This was initially an experiment I made when HTML5 Web Storage (`localStorage` and `sessionStorage`) first came out and had been adopted by all major browsers (chrome/webkit, opera/presto, firefox/gecko)
