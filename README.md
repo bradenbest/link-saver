@@ -2,6 +2,9 @@
 
 The Link Saver is a project I made to replace bookmarks and provide a clean UI instead. Cause in my opinion, browser bookmark systems suck.
 
+![](showcase.png)
+![](showcase2.png)
+
 ## What's new?
 
 This version adds paradigms. Although I stubbornly kept with the awful storage model from 1.0.0, along with using regex to edit links, and now paradigms.
