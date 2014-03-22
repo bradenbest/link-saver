@@ -1,0 +1,12 @@
+input, button{
+  width:150px;
+  background:#fff;
+  color:#000;
+  border:1px solid #ccc;
+  font:16px "Courier New";
+  padding:5px;
+  text-align:center;
+}
+button:hover, input[type=submit]:hover{
+  background:#eef;
+}

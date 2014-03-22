@@ -1,0 +1,44 @@
+/*Context Menu*/
+.cmenu{
+  position:fixed;
+  display:block;
+  min-width:180px;
+  min-height:0px;
+  background:rgba(255,255,255,0.4);
+  color:rgba(0,0,0,0.4);
+  border:1px solid rgba(204,204,204,0.4);
+  border-bottom:2px solid rgba(204,204,204,0.4);
+  border-right:2px solid rgba(204,204,204,0.4);
+  cursor:default;
+  list-style:none;
+  z-index:21;
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+}
+.cmenu:hover{
+  background:rgba(255,255,255,1);
+  color:rgba(0,0,0,1);
+  border:1px solid rgba(204,204,204,1);
+  border-bottom:2px solid rgba(204,204,204,1);
+  border-right:2px solid rgba(204,204,204,1);
+}
+.cmenu li{
+  padding:10px;
+  border:none;
+  border-bottom:1px solid rgba(204, 204, 204, 0.4);
+  text-align:center;
+}
+.cmenu:hover li{
+  border-bottom:1px solid rgba(204, 204, 204, 1);
+}
+.cmenu li:hover{
+  background:#eef;
+  
+}
+.cmenu a{
+  color:#000;
+  text-decoration:none;
+}
+.cmenu a:hover{
+  text-decoration:underline;
+}

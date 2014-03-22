@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="form.css">
+<form>
+  <legend>&nbsp;</legend>
+  <fieldset>
+    <input placeholder="link"/><br>
+    <input placeholder="title"/><br>
+    <input type="submit" />
+  </fieldset>
+</form>
+<script>
+var form = document.forms[0],
+    id = location.search.replace('?',''),
+    storage = JSON.parse(localStorage['Link Saver']),
+    item = storage[storage.Paradigm.key][id],
+    flink = document.querySelectorAll.apply(document,['form fieldset input'])[0],
+    ftitle = document.querySelectorAll.apply(document,['form fieldset input'])[1];
+flink.value  = item.link;
+ftitle.value = item.title;
+form.onsubmit = function(){
+  item.link = flink.value;
+  item.title = ftitle.value;
+  localStorage['Link Saver'] = JSON.stringify(storage);
+  return false;
+}
+</script>

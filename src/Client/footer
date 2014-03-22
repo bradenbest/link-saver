@@ -1,0 +1,20 @@
+<style>
+.footer{
+  font:16px "Courier New";
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  background:#eef;
+  padding:15px 0;
+  text-align:right;
+  z-index:22;
+  display:none;
+}
+.footer span{
+  margin-right:10px;
+}
+</style>
+<div class="footer">
+  <span>&copy; 2013 Braden Best</span>
+</div>

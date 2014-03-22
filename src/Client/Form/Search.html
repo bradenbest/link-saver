@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="form.css">
+<form>
+  <legend>&nbsp;</legend>
+  <fieldset>
+    <input placeholder="Search Term"/><br>
+    <input type="submit" value="Search"/><br>
+  </fieldset>
+</form>
+<style>
+fieldset.results{
+  text-align:left;
+}
+ul{
+  width:30%;
+}
+li{
+  text-align:left;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+li.result{
+  /*width:100%;*/
+}
+li.header{
+  border:none;
+  border-bottom:1px solid #ccc;
+}
+li.header:hover{
+  background:#fff;
+}
+img{
+  width:20px;
+  position:relative;
+  top:5px;
+  margin-right:10px;
+  margin-top: -5px;
+}
+a{
+  text-decoration:none;
+  color:#000;
+}
+a:hover{
+  text-decoration:underline;
+}
+button{
+  width:262px;
+  margin-bottom:40px;
+  /* margin-left:-16px; */
+}
+</style>
+<script>
+var form = document.forms[0],
+    storage = JSON.parse(localStorage['Link Saver']);
+
+
+function Search(){
+  var term = document.querySelector.apply(document,['form fieldset input']).value, results_exist = 0, item, list;
+  if(!term){
+    return false;
+  }
+  form[1].style.display = form[2].style.display = 'none';
+  document.querySelector.apply(document,['fieldset']).className = 'results';
+  function getFav(url){
+    var domain = RegExp('https?://([^/]*)/?','i').exec(url),
+        src = 'http://plus.google.com/_/favicon?domain='+(domain ? domain[1] : 'none');
+    return '<img src="'+src+'">';
+  }
+  list = document.createElement('ul');
+  for(var i in storage){
+    if(i !== 'Paradigm'){
+      if(RegExp(term,'i').test(JSON.stringify(storage[i]))){
+        item = document.createElement('li');
+        item.innerHTML = 'in <b>'+i+'</b>:';
+        item.className = 'header';
+        list.appendChild(item);
+        for(var j in storage[i]){
+          if(RegExp(term,'i').test(storage[i][j].title)){
+            var t = storage[i][j].title,
+                ot = RegExp(term,'i').exec(t)[0],
+                h = t.replace(RegExp(term,'i'),'<b>'+ot+'</b>'); // t = title, h = highlight
+            item = document.createElement('li');
+            item.innerHTML = '[Title] '+getFav(storage[i][j].link)+'<a target="_blank" href="'+storage[i][j].link+'">'+h+'</a>';
+            item.className = 'result';
+            list.appendChild(item);
+            results_exist = 1;
+          }else if(RegExp(term,'i').test(storage[i][j].link)){
+            item = document.createElement('li');
+            item.innerHTML = '[ URL ] '+getFav(storage[i][j].link)+'<a target="_blank" href="'+storage[i][j].link+'">'+storage[i][j].title+'</a>';
+            item.className = 'result';
+            list.appendChild(item);
+            results_exist = 1;
+          }
+        }
+      }
+    }
+  }
+  item = document.createElement('p');
+  item.innerHTML = results_exist ? ('Results for <b>'+term+'</b>:') : 'No Results found for <b>'+term+'</b>';
+  form[0].appendChild(item);
+
+  form[0].appendChild(list);
+
+  item = document.createElement('button');
+  item.innerHTML = 'Reset';
+  item.onclick = function(){location.reload();return false;}
+  form[0].appendChild(item);
+  return false;
+}
+onsubmit = function(){
+  Search();
+  return false;
+};
+(function loop(){
+  if(window.location.href.match(/window/gi)){
+    var style = document.createElement('style');
+    style.innerHTML = 'li.result,button{width:'+(window.innerWidth-30)+'px}button{width:'+(window.innerWidth-20)+'px}';
+    document.body.appendChild(style);
+    setTimeout(loop,100);
+  }else{
+    setTimeout(loop,100);
+  }
+})();
+</script>

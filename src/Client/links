@@ -1,0 +1,436 @@
+<style>
+.links{
+  width:70%;
+  float:right;
+  background:#fff;
+  margin-bottom:30px;
+  display:none;
+  border-left:1px solid #ccc;
+}
+.links li{
+  padding:10px;
+  padding-bottom:15px;
+  border-bottom:1px solid #ccc;
+  max-width:100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.links li.odd{
+  background:#f7f7f7;
+}
+.links li.starred{
+  font-weight:bold;
+  background:#eef;
+}
+.links li:hover{
+  background:#eef;
+}
+.links li:last-child{
+  margin-bottom:200px;
+}
+.links li a{
+  text-decoration:none;
+  color:#000;
+}
+.links li a:hover{
+  text-decoration:underline;
+}
+.links li img{
+  position:relative;
+  width:20px;
+  top:5px;
+  margin-right:5px;
+}
+.links li .num{
+  display:inline-block;
+  width:30px;
+}
+.frame{
+  position:absolute;
+  z-index:20;
+  left:0;
+  top:0;
+  background:#fff;
+  width:30%;
+}
+.frame div iframe{
+  border:none;
+}
+</style>
+<ul class="links"></ul>
+<script src="http://code.jquery.com/jquery-2.0.1.min.js"></script>
+<script>
+if(localStorage['Link Saver']){
+  var storage = JSON.parse(localStorage['Link Saver']);
+}else{
+  var _storage = {
+    Paradigm:{
+      key:'Link',
+      list:['Link']
+    },
+    Link:[]
+  };
+  localStorage['Link Saver'] = JSON.stringify(_storage);
+  location.reload();
+}
+if(window.storage){
+  var links = document.querySelector.apply(document,['.links']),
+      paradigm = storage[storage.Paradigm.key];
+  document.title = storage.Paradigm.key + ' Saver';
+  function getFav(url){
+    var fav = RegExp('https?://([^/]*)/?','i').exec(url);
+    if(fav){
+      return 'http://plus.google.com/_/favicon?domain='+fav[1];
+    }else{
+      return 'http://plus.google.com/_/favicon';
+    }
+  }
+  function save(){
+    localStorage['Link Saver'] = JSON.stringify(storage);
+    location.reload();
+  }
+  function Info(id){
+    HPopup('<b>URL</b>: '+paradigm[id].link+'<br><br><b>Title</b>: '+paradigm[id].title);
+  }
+  function Edit(id){
+    Popup('Edit.html?'+id);
+    (function loop(){
+      if(document.body.scrollTop > 0){
+        scrollBy(0,-100);
+        setTimeout(loop,10);
+      }
+    })();
+  }
+  function Star(id){
+    paradigm[id].starred = true;
+    save();
+  }
+  function Unstar(id){
+    delete paradigm[id].starred;
+    save();
+  }
+  function Delete(id){
+    if(!confirm('Delete this item?')){
+      return false;
+    }
+    paradigm.splice(id,1);
+    save();
+  }
+  (function loop(i){ // render link list
+    if(i >= 0){
+      var item = document.createElement('li'),
+          link = paradigm[i].link,
+          title = paradigm[i].title,
+          starred = false;
+      if(paradigm[i]){
+        if(paradigm[i].starred){
+          starred = true;
+        }
+      }
+      item.innerHTML = '<span class="num">'+(i+1)+'</span>'+
+        '<img src="'+getFav(link)+'">'+
+        '<a target="_blank" href="'+link+'">'+title+'</a>';
+      if(i % 2 == 0){
+        item.className = "odd";
+      }
+      if(starred){
+        item.className = 'starred';
+      }
+      item.oncontextmenu = item.onclick = function(){
+        var opts = [
+          ['Options for Link #'+(i+2),null],
+          ['Open Link',function(){window.open(link)}],
+          ['Display Info',function(){Info(i+1)}],
+          ['Edit',function(){Edit(i+1)}],
+          ['Star',function(){Star(i+1)}],
+          ['Delete',function(){Delete(i+1)}]
+        ];
+        if(starred){
+          opts[4] = ['Unstar',function(){Unstar(i+1)}];
+        }
+        createMenu(opts);
+        if(event.type == "contextmenu"){ // Only suppress contextmenu; do not suppress click
+          return false;
+        }
+      }
+      links.appendChild(item);
+      setTimeout(function(){loop(--i);},10);
+    }
+  })(paradigm.length-1);
+
+  (function loop(){ // check for changes to storage
+    if(JSON.stringify(storage) !== localStorage['Link Saver']){
+      location.reload();
+    }else{
+      setTimeout(loop,100);
+    }
+  })();
+
+  (function(){ // No Links
+    if(paradigm.length == 0){
+      var item = document.createElement('li');
+      item.innerHTML = 'No Links';
+      links.appendChild(item);
+    }
+  })();
+  function DevTool(){
+    function Export(){
+      this.converter = function(min,max){
+        if(min){
+          if(max){
+            var out = '';
+            for(var i = min-1; i < max; i ++){
+              out += paradigm[i].link + '[' + paradigm[i].title + ']\n';
+            }
+            return out;
+          }else{
+            return paradigm[min-1].link + '[' + paradigm[min-1].title + ']\n';
+          }
+        }else{
+          var out = '';
+          for(var i = 0; i < paradigm.length; i ++){
+            out += paradigm[i].link + '[' + paradigm[i].title + ']\n';
+          }
+          return out;
+        }
+      }
+      this.json = function(){
+        return JSON.stringify(storage);
+      }
+    }
+    function Link(){
+      this.open = function(min,max){
+        if(max){
+          for(var i = min-1; i < max; i++){
+            open(paradigm[i].link);
+          }
+        }else{
+          open(paradigm[min-1].link);
+        }
+      }
+      this.info = function(min,max){
+        var out = '';
+        if(max){
+          for(var i = min-1; i < max; i++){
+            out += '#'+ (i+1) + '{\n  Link:  ' + paradigm[i].link + '\n  Title: ' + paradigm[i].title + '\n';
+            if(paradigm[i].starred){
+              out += '  Starred: True\n}\n\n';
+            }else{
+              out += '}\n\n';
+            }
+          }
+          console.log(out);
+        }else{
+          out += '#'+ min + '{\n  Link:  ' + paradigm[min-1].link + '\n  Title: ' + paradigm[min-1].title + '\n';
+          if(paradigm[min-1].starred){
+            out += '  Starred: True\n}';
+          }
+          console.log(out);
+        }
+      }
+      this.add = function(link,title){
+        paradigm.push({link:link,title:title});
+        save();
+      }
+      this.edit = function(n,link,title){
+        paradigm[n-1].link = link;
+        paradigm[n-1].title = title;
+        save();
+      }
+      this.delete = function(min,max){
+        if(max){
+          paradigm.splice(min-1,max-min+1);
+          save();
+        }else{
+          paradigm.splice(min-1,1);
+        }
+        save();
+      }
+      this.star = function(min,max){
+        if(max){
+          for(var i = min-1; i < max; i++){
+            Star(i);
+          }
+        }else{
+          Star(min-1);
+        }
+      }
+      this.unstar = function(min,max){
+        if(max){
+          for(var i = min-1; i < max; i++){
+            Unstar(i);
+          }
+        }else{
+          Unstar(min-1);
+        }
+      }
+      this.test = function(min,max){
+        if(max){
+          console.log('Targeted: range { #'+(min)+' ('+paradigm[min-1].title+') - #'+(max) + ' ('+paradigm[max-1].title+') }');
+        }else{
+          console.log('Targeted: #'+(min)+' ('+paradigm[min-1].title+')');
+        }
+      }
+      this.list = function(){
+        var out = '';
+        for(var i = 0; i < paradigm.length; i++){
+          out += '#'+(i+1)+'{\n  Link:  '+paradigm[i].link+'\n  Title: '+paradigm[i].title+'\n';
+          if(paradigm[i].starred){
+            out += '  Starred: True\n}\n\n';
+          }else{
+            out += '}\n\n';
+          }
+        }
+        console.log(out);
+      }
+      this.search = function(term){
+        var i;
+        console.log('Scope: in Paradigm "'+storage.Paradigm.key+'"\nTerm: '+term);
+        for(i = 0; i < paradigm.length; i++){
+          if(paradigm[i].title.match(term)){
+            console.log('[In Title] :: #' + (i+1) + '{\n  Link:  '+paradigm[i].link+'\n  Title: '+paradigm[i].title+'\n}\n');
+          }else if(paradigm[i].link.match(term)){
+            console.log('[In URL] :: #' + (i+1) + '{\n  Link:  '+paradigm[i].link+'\n  Title: '+paradigm[i].title+'\n}\n');
+          }
+        }
+      }
+    }
+    function Global(){
+      this.search = function(term){
+        var list = storage.Paradigm.list,i,j;
+        console.log('Scope: Global\nTerm: '+term);
+        for(i = 0; i < list.length; i ++){
+          if(JSON.stringify(storage[list[i]]).match(term)){
+            console.log('In Paradigm ' + list[i] + '{');
+            for(j = 0; j < storage[list[i]].length; j ++){
+              if(storage[list[i]][j].title.match(term)){
+                console.log('  [In Title] :: #'+(j+1)+'{\n    Link:  '+storage[list[i]][j].link+'\n    Title: '+storage[list[i]][j].title+'\n  }');
+              }else if(storage[list[i]][j].link.match(term)){
+                console.log('  [ In URL ] :: #'+(j+1)+'{\n    Link:  '+storage[list[i]][j].link+'\n    Title: '+storage[list[i]][j].title+'\n  }');
+              }
+            }
+            console.log('}');
+          }
+        }
+      }
+      this.list = function(){
+        var list = storage.Paradigm.list,i,j;
+        for(i = 0; i < list.length; i++){
+          console.log('In Paradigm '+list[i]+'{');
+          for(j = 0; j < storage[list[i]].length; j++){
+            console.log('  #'+(j+1)+'{\n    Link:  '+storage[list[i]][j].link+'\n    Title: '+storage[list[i]][j].title+'\n  }');
+          }
+          console.log('}');
+        }
+      }
+    }
+    function Paradigm(){
+      this.add = function(p){
+        storage.Paradigm.list.push(p);
+        storage[p] = [];
+        save();
+      }
+      this.select = function(p){
+        storage.Paradigm.key = storage.Paradigm.list[p];
+        save();
+      }
+      this.remove = function(p){
+        if(storage.Paradigm.list[p] == storage.Paradigm.key){
+          storage.Paradigm.key = storage.Paradigm.list[0];
+        }
+        delete storage[storage.Paradigm.list[p]];
+        storage.Paradigm.list.splice(p,1);
+        save();
+      }
+      this.test = function(p){
+        console.log('Targeted: #'+p+' ('+storage.Paradigm.list[p]+')');
+      }
+      this.list = function(){
+        for(var i in storage.Paradigm.list){
+          console.log('#'+i+': ' + storage.Paradigm.list[i] + '\n');
+        }
+      }
+      this.which = function(){
+        console.log('Current Paradigm: '+storage.Paradigm.key);
+      }
+    }
+    function Account(){
+      this.logout = function(){
+        console.log('Logging out . . .');
+        $.ajax({
+          url:'logout.php'
+        }).done(function(){
+          location.reload();
+        });
+      }
+      this.username = function(){
+        $.ajax({
+          url:'echo.username.php'
+        }).done(function(response){
+          console.log(response);
+        })
+      }
+      this.help = function(_open){
+        if(!_open){
+          $.ajax({
+            url:'Client/Help.html'
+          }).done(function(response){
+            var helpPage = document.createElement('div'), 
+                buffer = document.createElement('div'), 
+                out = '';
+            helpPage.innerHTML = response.replace(/help_images/g, 'Client/help_images');
+            buffer.innerHTML = helpPage.innerHTML.replace(/\<br\>/gi, '\n');
+            for(var i = 0; i < buffer.children.length; i++){
+              if(buffer.children[i].tagName){
+                if(buffer.children[i].tagName.match(/style/gi)){
+                  buffer.removeChild(buffer.children[i]);
+                }
+              }
+            }
+            out = buffer.innerText;
+            console.log(out);
+          });
+        }else{
+          open('Client/Help.html');
+        }
+      }
+    }
+    this.export = new Export();
+    this.link = new Link();
+    this.global = new Global();
+    this.paradigm = new Paradigm();
+    this.account = new Account();
+  }
+  var devtool,dt,dev;
+  devtool = dt = dev = new DevTool();
+  (function(){ // jQuery
+    if(window.jQuery){
+      if(!window.anonymous){
+        document.title = "Saving . . .";
+        $.ajax({
+          url:"ajaxsave.php",
+          type:"POST",
+          data:{
+            "data":localStorage['Link Saver']
+          }
+        }).done(function(response){
+          console.log('Attempted to save at '+new Date());
+          if(response){
+            console.log(response);
+          }
+          document.title = storage.Paradigm.key + " Saver";
+        });
+      }
+      $('.menu, .links').fadeIn(1000);
+      setTimeout(function(){$('.footer').fadeIn(500)},500); // Why do I have to do this?
+    }
+  })();
+  
+  (function(){
+    if(window.anonymous || window.shared){
+      document.querySelectorAll.apply(document,['.menu li'])[5].style.display = 'none';
+    }
+  })();
+}
+</script>

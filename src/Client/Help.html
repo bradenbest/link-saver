@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<?php include("../config.php");?>
+<style>
+*{
+  margin:0;
+  padding:0;
+}
+body{
+  font: 14px "Courier New";
+}
+h1, h2{
+  margin:5px;
+  margin-bottom:10px;
+  padding-bottom:10px;
+}
+h1{
+  border-bottom:1px solid #ccc;
+}
+hr{
+  border:none;
+  background:none;
+  border-bottom:1px solid #ccc;
+  margin: 10px 0;
+}
+img{
+  display:block;
+  margin-bottom:10px;
+}
+img.fullscreen{
+  width:80%;
+}
+p{
+  margin:5px;
+}
+a{
+  text-decoration:none;
+  color:#00f;
+}
+a:hover{
+  text-decoration:underline;
+}
+ol{
+  margin-left:50px;
+}
+pre.code ol{
+  margin:0;
+  margin-left:0px;
+  counter-reset:item;
+  list-style:none;
+}
+pre.code ol li{
+  margin:0;
+}
+pre.code ol li:before{
+  content:counter(item) "   ";
+  counter-increment:item;
+  color:#999;
+}
+pre.code{
+  font:12px "Courier New" Monospace;
+  color:#ddd;
+  background:#333;
+  padding:10px;
+  max-width:90%;
+  margin:0 auto;
+  word-wrap:break-word;
+  white-space:pre-wrap;
+}
+</style>
+<title>Link Saver Help</title>
+<h1>Welcome to the Link Saver</h1>
+<h2>The Basics</h2>
+<img src="help_images/help1.png" class="fullscreen">
+<pre>
+1 - The "Save Page" Bookmarklet. Add this via the Add Link Page
+
+2 - The Menu has the tools necessary to use the link saver
+
+3 - Your Links will appear here listed in ascending order
+
+4 - Tells you who you are logged in as
+</pre>
+<hr>
+<h2>The Context Menu</h2>
+<p>In the Link Saver, links are managed by right clicking the link, if using a cell phone or tablet, tapping the immediate area to the left of the link's <a href="http://en.wikipedia.org/wiki/favicon">favicon</a> will bring up the context menu, as shown below:</p>
+<img src="help_images/help2.png" class="fullscreen">
+<p>The menu items also have their own context menus:</p>
+<img src="help_images/help3.png" class="fullscreen">
+<p>Here you can choose to open the form in a frame (default), in a new tab, or learn about what the item does</p>
+<p>By the way, the <a href="http://en.wikipedia.org/wiki/Context_menu">context menu</a> is the menu you get when you right click on something.</p>
+<hr>
+<h2>The Main Menu</h2>
+<p>The Main menu is how you will use the Link Saver.</p>
+<img src="help_images/menu.png">
+
+<b>Search</b>
+<p>This tool allows you to search for links in all paradigms. It uses <a href="http://en.wikipedia.org/wiki/Regular_expressions">Regular Expressions</a>, so terms like "." will list everything you have</p>
+<img src="help_images/searchall.png">
+
+<b>Add Link</b>
+<p>This tool allows you to, of course, Add a Link to the Link Saver. In the spirit of efficiency, I've also made a bookmarklet to add the page you're on to the link saver with the click of a bookmark</p>
+<img src="help_images/help4.png" class="fullscreen">
+<p>To add the bookmarklet, open your bookmarks toolbar (in chrome, that's Ctrl+Shift+B), then drag the "Save Page" link into your bookmarks bar, as demonstrated in the above screenshot</p>
+
+<b>Add Paradigm</b>
+<p>This tool allows you to add a "paradigm" to the Link Saver. I can't remember where I got "paradigm" from, but basically, it's a category for your links, or "folders", if you'd prefer to think of it that way. You can use the feature to sort your links into, for example, links from YouTube, NewGrounds, and Facebook. In this case, the paradigms would be "YouTube", "NewGrounds", and "Facebook". If you like Gmail's labels, then you'll understand why this feature is useful.</p>
+<p>Note that when you save a link, it will save it in the current paradigm. So make sure you are in the correct Paradigm before saving a link.</p>
+
+<b>Select Paradigm</b>
+<p>This tool allows you to select between existing paradigms. A list will be generated allowing you to click on the paradigm you wish to change to.</p>
+<img src="help_images/selparadigm.png">
+
+<b>Remove Paradigm</b>
+<p>This tool allows you to remove a paradigm. When you remove a paradigm, all of the associated links will be deleted as well</p>
+
+<b>Help</b>
+<p>This is the button you probably clicked to get here</p>
+
+<b>Account Settings</b>
+<p>This lets you change your username, password and email, just as long as the username or email don't already exist</p>
+
+<b>Log Out</b>
+<p>This logs you out. Note that you are automatically logged out when you close your browser</p>
+<hr>
+<h2>Opening Links</h2>
+<p>I thought I'd go over this just in case.</p>
+<p>When you hover over a link's title, it will underline, clicking the link will open the link in a new tab</p>
+<img src="help_images/help5.png" class="fullscreen">
+<img src="help_images/help6.png" class="fullscreen">
+<p>As is demonstrated above</p>
+
+<hr>
+
+<h2>Minimalist Key Listener</h2>
+<p>If you have the <a href="https://chrome.google.com/webstore/detail/minimalist-for-everything/bmihblnpomgpjkfddepdpdafhhepdbek?utm_source=chrome-ntp-icon">Minimalist for Everything</a> extension for chrome, you can add a module that lets you save whatever page you're currently on with the press of <b>Ctrl + Shift + S</b></p>
+<br>
+<p>Here's how to do it:</p>
+<b>The Easy Way</b>
+<ol>
+  <li>Go to the Minimalist dashboard. In chrome, you can left click the Minimalist icon</li>
+  <li>Navigate to the "Data" tab</li>
+  <li>Paste the following into the Import/Export field:</li>
+  <pre class="code">{"version":"0.6.7","preferences":{"isEnabled":"true","isDebugging":"false"},"modules":[{"name":"Link Saver Key Listener","author":"Braden","includes":"*minimalistsuite.com*,***","version":"1.0.0","isEnabled":true,"options":[{"description":"Shift-S Listener","isEnabled":true,"tab":"General","section":"General","type":"checkbox","fields":[],"head":{"js":["/* Press Ctrl+Shift+S to save link */","var global = {};","(function(){","    onkeydown = function(e){","        if(e.ctrlKey && e.shiftKey && e.keyCode == 0x53 && !global.linkSaved){","            var frame = document.createElement('iframe'),","                a = document, ","                b = encodeURIComponent(a.location), ","                c = encodeURIComponent(a.title);","            frame.src = 'http://<?=$PATH_TO_INDEX?>/Client/Form/AutoLink.html?[\"'+b+'\",\"'+c+'\"]';","            frame.style.display = 'none';","            document.body.appendChild(frame);","            global.linkSaved = 1;","            setTimeout(function(){document.body.removeChild(frame)},10000);","        }","    }","})();"]},"load":{}}],"index":2}]}</pre>
+  <li>Then click the Import button, and restart your browser (or reload every tab individually)</lI>
+</ol>
+<br>
+<b>The More Technically Involved Way</b>
+<ol>
+  <li>Go to the Minimalist dashboard. In chrome, you can left click the Minimalist icon</li>
+  <li>Click on the "New Module" button, and then edit the newly created module</li>
+  <li>Name it whatever you like</li>
+  <li>Add "<b>,***</b>" (that's a comma and three stars) to the field where it says "*minimalistsuite.com*"</li>
+  <li>Now click on the "Add Option" button</li>
+  <li>Name it whatever you like</li>
+  <li>In the Head JS field, paste the following script:</li>
+  <pre class="code"><ol>
+<li>/* Press Ctrl+Shift+S to save link */<li><li>var global = {};</li><li>(function(){</li><li>    onkeydown = function(e){</li><li>        if(e.ctrlKey && e.shiftKey && e.keyCode == 0x53 && !global.linkSaved){</li><li>            var frame = document.createElement('iframe'),</li><li>                a = document, </li><li>                b = encodeURIComponent(a.location), </li><li>                c = encodeURIComponent(a.title);</li><li>            frame.src = 'http://<?=$PATH_TO_INDEX?>/Client/Form/AutoLink.html?["'+b+'","'+c+'"]';</li><li>            frame.style.display = 'none';</li><li>            document.body.appendChild(frame);</li><li>            global.linkSaved = 1;</li><li>            setTimeout(function(){document.body.removeChild(frame)},10000);</li><li>        }</li><li>    }</li><li>})();</li>
+  </ol></pre>
+<li>Then save it, and all your opened tabs should reload themselves.</li>
+</ol>
+<p>To test it out, open a new tab, go to a webpage, and press <b>Ctrl + Shift + S</b>. After that, go to the link saver, and your link should be added</p>
+<hr>
+
+<h2>Backing up Data on Anonymous</h2>
+<p>Since anonymous works by simply not attempting to send the localStorage data to the database, or request from the database, you can log into a registered account, and that would delete your links on anonymous, replacing them with the links obtained from the registered account. What if those links were important?</p>
+
+<b>Obtaining a Backup</b>
+
+<p>You can back up your anonymous data by opening a javascript console in your browser. This is typically pinned in the menu under "developer tools". Make sure to open the console while on the link saver app. Once you get a console open, and enter this command</p>
+<pre class="code">
+localStorage['Link Saver']
+</pre>
+
+<p>This command should return the value of the localStorage entry. Copy the text that results, and there is your backup.</p>
+
+<b>Restoring a Backup</b>
+
+<p>To restore from the backup, log in as the desired user, in this case, anonymous, and open a javascript console. Then type </p>
+
+<pre class="code"><ol><li>//For this example, assume that the backup text is "{"Link":[{"link":"http://youtube.com/","title":"YouTube - Broadcast Yourself"}]}"</li><li>text = {"Link":[{"link":"http://youtube.com/","title":"YouTube - Broadcast Yourself"}]}; // Yes, remove the quotes from the outside</li><li>localStorage['Link Saver'] = JSON.stringify(text);</li></ol></pre>
+
+<p>After that, the page should detect the change, and immediately refresh, loading the new links</p>
+
+<hr>
+
+<h2>Using the Command-Line</h2>
+<p>If you're a linux user, a webmaster, or otherwise involved in linux, you can probably think of a fair amount of times when using the command-line was more efficient than the GUI. So I've added a CLI to the link saver. It's nowhere near as robust as bash, but like in bash, you can actually do more with the CLI than you can with the GUI. For example, in the CLI, you can do batch jobs on links.</p>
+
+<b>Getting Started</b>
+
+<p>First off, open a JavaScript console. In chrome, that's Ctrl+Shift+J. In firefox, Ctrl+Shift+K</p>
+
+<p>Alertnatively, you can go <a href="../cli">here</a></p>
+
+<p>The interface is object-oriented and function-based. To read the source code of the CLI, type <b>DevTool</b></p>
+
+<p>Note: In the console, <b>DevTool</b> shows the source of the DevTool class, while <b>dev</b> will show an instance of the class.</p> 
+<p>In the <a href="../cli">cli version</a> of the app, <b>DevTool</b> will list all of the functions within the DevTool class.</p>
+
+<b>Using the CLI</b>
+
+<p>There are already some instances of the <b>DevTool</b> class: devtool, dt, and dev. Simply typing any of those in will reveal the DevTool class in a more organized fashion. For this documentation, I will refer to the instance named <b>dev</b></p>
+
+<p>There are five subclasses: <b>Export</b>, <b>Link</b>, <b>Paradigm</b>, <b>Global</b> and <b>Account</b>. Instances of them are defined inside the dev object as export, link, paradigm, etc. Inside of those are the actual functions.</p>
+
+<p>Note: functions with <b>(int min, int max)</b> can be called as function(min,max) or just function(min). E.g. <b>dev.link.delete(1,5)</b> will delete links 1 - 5, while <b>dev.link.delete(3)</b> will delete link #3</p>
+
+<b>Export</b>
+
+<p>The Export class has, as the name suggests, functions for exporting data.</p>
+
+<ul>
+  <li><b>converter(int <u>min</u>, int <u>max</u>)</b> - exports the selected data to Link Converter format (url[title]). Example use: <i>dev.export.converter(1,5)</i> will export links 1 - 5, <i>dev.export.converter(3)</i> will only export link #3. <i>dev.export.converter()</i> (without any arguments) will export all of the links</li>
+  <li><b>json()</b> - exports the entire paradigm in generalized json format. Example: <i>dev.export.json()</i>
+</ul>
+
+<b>Link</b>
+
+<p>The Link class has functions for manipulating the links in the current paradigm. To make it simple, the numbers displayed next to the links are used instead of the ids (which start from 0 instead of 1)</p>
+
+<ul>
+  <li><b>search(regex <u>term</u>)</b> - searches for links in the current paradigm using <u>term</u>. Uses Regular Expressions, but also accepts normal strings. Example use: <i>dev.link.search(/youtube/i)</i> will search for all instances of youtube, case-insensitive; "youtube", "YouTube", and even "YOUTuBE" will be matched <i>dev.link.search('YouTube')</i> will search for all instances containing specifically "YouTube". Case-sensitive; "youtube" will not be matched. For more information, see <a href="http://en.wikipedia.org/wiki/Regex">Wikipedia's article on regular expressions</a>, or the very detailed <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">MDN documentation</a></li>
+  <li><b>list()</b> - lists all the links in the current paradigm</li>
+  <li><b>test(int <u>min</u>, int <u>max</u>)</b> - this is like the --dry-run flag, in that it tells you what link or range of links <i>would have been</i> targeted</li>
+  <li><b>add(string[] <u>link</u>, string[] <u>title</u>)</b> - adds a link to the current paradigm. Example: <i>dev.link.add('http://google.com', 'Google')</i> will add this: <a href="http://google.com">Google</a></li>
+  <li><b>delete(int <u>min</u>, int <u>max</u>)</b> - deletes one or more links from the current paradigm. Example: <i>dev.link.delete(2,4)</i> will delete links 2 - 4</li>
+  <li><b>edit(int <u>n</u>, string[] <u>link</u>, string[] <u>title</u>)</b> - edits the link targeted by <b>n</b> with the link and title provided. Example: <i>dev.link.edit(1, 'http://google.com', 'Google')</i> will change the link and title of link #1 to the url and title of Google</li>
+  <li><b>info(int <u>min</u>, int <u>max</u>)</b> - Shows the informations on the target link or range</li>
+  <li><b>open(int <u>min</u>, int <u>max</u>)</b> - Opens the target link or range of links. Due to being evoked in the console, the links will open in new windows, and might cause some faux pas with the popup blocker</li>
+  <li><b>star(int <u>min</u>, int <u>max</u>)</b> - Stars the target link or range of links</li>
+  <li><b>unstar(int <u>min</u>, int <u>max</u>)</b> - Unstars the target link or range of links</li>
+</ul>
+
+<b>Paradigm</b>
+<p>The Paradigm class has functions for the manipulation of paradigms.</p>
+
+<ul>
+  <li><b>which()</b> - returns the name of the current paradigm</li>
+  <li><b>list()</b> - lists all the paradigms</li>
+  <li><b>test(int <u>p</u>)</b> - returns the target paradigm</li>
+  <li><b>add(string[] <u>p</u>)</b> - adds a new paradigm. Example: <i>dev.paradigm.add('YouTube')</i> will add a new paradigm called YouTube</li>
+  <li><b>select(int <u>p</u>)</b> - navigates to a different paradigm using the id provided. Use list() and test() to find the id of the desired paradigm</li>
+  <li><b>remove(int <u>p</u>)</b> - removed the target paradigm. Always use test() before executing a delete function so you don't delete the wrong thing.</li>
+</ul>
+
+<b>Global</b>
+<p>The Global class has functions for gathering information on all the links in all the paradigms.</p>
+
+<ul>
+  <li><b>search(regex <u>term</u>)</b> - searches for links in all paradigms using <u>term</u>. Uses Regular Expressions, but also accepts normal strings. This is the same as dev.link.search(), but on the global scope</li>
+  <li><b>list()</b> - Lists all of the links, from every paradigm</li>
+</ul>
+
+<b>Account</b>
+<p>The Account class has functions for managing the current account</p>
+
+<ul>
+  <li><b>logout()</b> - logs out of the current account</li>
+  <li><b>username()</b> - returns the username of the currently logged in user</li>
+  <li><b>help(int <u>open</u>)</b> - returns this help page. if <u>open</u> is true, it will open this page in a new window. Else, it will print the page in the console.</li>
+</ul>
+
+<hr>
+
+<p>Well, I hope this detailed everything anyone could possibly get confused about and that you find this app as useful as I have.</p>
+
+<p>-Braden</p>
+<style>
+ul{
+  margin-left:30px;
+  border:1px solid #ccc;
+  list-style:none;
+  background:#333;
+  color:#fff;
+}
+ul li{
+  border-bottom:1px solid #ccc;
+  padding:5px;
+  font:10px courier new;
+}
+</style>

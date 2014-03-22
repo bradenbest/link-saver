@@ -1,0 +1,77 @@
+*{
+  margin:0;
+  padding:0;
+}
+body,button{
+  font:16px courier new;
+}
+ul{
+  list-style:none;
+  position:relative;
+  top:-1px;
+}
+ul li{
+  background:#fff;
+  border-bottom:1px solid #ccc;
+  padding:10px;
+}
+ul li:first-child{
+  border-top:1px solid #ccc;
+}
+ul li:nth-child(even){
+  background:#eee;
+}
+ul li:hover{
+  background:#e7e7e7;
+}
+span{
+  color:#555;
+  margin-right:10px;
+  display:inline-block;
+  min-width:20px;
+}
+.fav{
+  position:relative;
+  top:3px;
+  height:15px;
+  margin-right:5px;
+}
+a{
+  color:#00c;
+  text-decoration:none;
+}
+a.list{
+  color:#000;
+  text-decoration:none;
+}
+a:hover{
+  text-decoration:underline;
+}
+textarea{
+  width:300px;
+  height:200px;
+  border:1px solid #ccc;
+}
+textarea:focus{
+  background:#eee;
+  outline:none;
+}
+button{
+  width:300px;
+  height:50px;
+  background:#fff;
+  border:none;
+  border-left:1px solid #ccc;
+  border-right:1px solid #ccc;
+  border-bottom:1px solid #ccc;
+  display:block;
+}
+button:hover{
+  background:#eee;
+}
+canvas.checkbox{
+  margin-right:5px;
+  position:relative;
+  top:3px;
+}
+

@@ -1,0 +1,112 @@
+<style>
+.menu{
+  width:30%;
+  position:fixed;
+  display:none;
+}
+.menu li{
+  padding:10px;
+  border:1px solid #ccc;
+  border-top:none;
+  cursor:pointer;
+  text-align:center;
+}
+.menu li:first-child{
+  border-top:1px solid #ccc;
+}
+.menu li:hover{
+  background:#eef;
+}
+.cmenu li a:hover{
+  text-decoration:none;
+  cursor:default;
+}
+</style>
+
+<ul class="menu"></ul>
+
+<script>
+(function(){
+  var list = [
+    [
+      "Search", // name
+      function(){Popup('Search.html',2000)}, // onclick
+      [ // contextmenu
+        ["View in Frame", function(){Popup('Search.html',2000)}],
+        ["View in New Tab",function(){window.open('Client/Form/Search.html?window')}],
+        ["What's This?",function(){window.open('data:text/plain,This tool lets you search for links in all paradigms','','width=200,height=100')}]
+      ]
+    ],
+    [
+      "Add Link",
+      function(){Popup('AddLink.html')},
+      [
+        ["View in Frame",function(){Popup('AddLink.html')}],
+        ["View in New Tab",function(){window.open('Client/Form/AddLink.html')}],
+        ["What's This?",function(){window.open('data:text/plain,This tool lets you add a link to the Current Paradigm','','width=200,height=100')}]
+      ]
+    ],
+    [
+      "Add Paradigm",
+      function(){Popup('AddParadigm.html')},
+      [
+        ["View in Frame",function(){Popup('AddParadigm.html')}],
+        ["View in New Tab",function(){window.open('Client/Form/AddParadigm.html')}],
+        ["What's This?",function(){window.open('data:text/plain,This tool lets you create a category for your links to sort them, reffered to here as a "Paradigm"','','width=200,height=100')}]
+      ]
+    ],
+    [
+      "Select Paradigm",
+      function(){Popup('SelParadigm.html',2000)},
+      [
+        ["View in Frame",function(){Popup('SelParadigm.html',2000)}],
+        ["View in New Tab",function(){window.open('Client/Form/SelParadigm.html')}],
+        ["What's This?",function(){window.open('data:text/plain,This tool lets you select between existing paradigms','','width=200,height=100')}]
+      ]
+    ],
+    [
+      "Remove Paradigm",
+      function(){Popup('RemParadigm.html',2000)},
+      [
+        ["View in Frame",function(){Popup('RemParadigm.html',2000)}],
+        ["View in New Tab",function(){window.open('Client/Form/RemParadigm.html')}],
+        ["What's This?",function(){window.open('data:text/plain,This tool lets you delete paradigms','','width=200,height=100')}]
+      ]
+    ],
+    [
+      "Help",
+      function(){window.open('Client/Help.html')},
+      null
+    ],
+    [
+      "Account Settings",
+      function(){location.href = 'account.php'},
+      null
+    ],
+    [
+      "Log Out",
+      function(){location.href = 'logout.php'},
+      null
+    ]
+  ], menu = document.querySelector.apply(document,['.menu']);
+  (function loop(i){
+    if(i < list.length){
+      var item = document.createElement('li');
+      item.innerHTML = list[i][0];
+      item.onclick = list[i][1];
+      if(list[i][2]){
+        item.oncontextmenu = function(){
+          createMenu(list[i][2]);
+          return false;
+        }
+      }else{
+        item.oncontextmenu = function(){
+          return false;
+        }
+      }
+      menu.appendChild(item);
+      setTimeout(function(){loop(i+1)},10);
+    }
+  })(0);
+})();
+</script>

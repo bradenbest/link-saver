@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="form.css">
+<form>
+  <legend>&nbsp;</legend>
+  <fieldset>
+    <ul></ul>
+  </fieldset>
+</form>
+<style>
+li{
+  width:95%;
+}
+</style>
+<script>
+var list = document.querySelector.apply(document,['ul']),
+    storage = JSON.parse(localStorage['Link Saver']),
+    plist = storage.Paradigm.list;
+    
+function remove(id){
+  if(plist.length <= 1){
+    alert('Cannot delete. There must be at least 1 existing paradigm.');
+    return false;
+  }
+  if(!confirm('Are you sure you wish to delete paradigm "'+plist[id]+'"?')){
+    return false;
+  }
+  delete storage[plist[id]]; // Delete Paradigm
+  plist.splice(id,1); // Delete pointer
+  storage.Paradigm.key = plist[0];
+  localStorage['Link Saver'] = JSON.stringify(storage);
+}
+
+(function loop(i){
+  if(i < plist.length){
+    var item = document.createElement('li');
+    item.innerHTML = plist[i];
+    item.onclick = function(){
+      remove(i-1);
+    }
+    if(plist[i] === storage.Paradigm.key){
+      item.style.background = '#eef';
+    }
+    list.appendChild(item);
+    i++;
+    setTimeout(function(){loop(i);},10);
+  }else{
+  }
+})(0);
+</script>

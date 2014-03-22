@@ -1,0 +1,31 @@
+*{
+  margin:0;
+  padding:0;
+}
+body{
+  font:16px "Courier New";
+}
+fieldset{
+  padding:10px;
+  text-align:center;
+  border:1px solid #ccc;
+  border-top:none;
+  margin-top:-20px;
+}
+input, button, li{
+  width:250px; 
+  background:#fff;
+  color:#000;
+  border:1px solid #ccc;
+  font:16px "Courier New";
+  padding:5px;
+  text-align:center;
+  margin-bottom:5px;
+}
+input[type=submit]{
+  width:262px;
+}
+button:hover, input[type=submit]:hover, li:hover{
+  background:#eef;
+}
+

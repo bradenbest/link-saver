@@ -1,0 +1,55 @@
+#!/bin/bash
+# Search the entire codebase for a snippet
+
+search(){
+  numlines=`cat $1 | grep $2 | wc -l`
+  if [ $[numlines] -gt $[0] ] ; then
+    echo ${1}:
+    cat -n $1 | grep $2
+    echo
+  fi
+}
+
+search account.php $1
+search ajaxaccount.php $1
+search ajaxlogin.php $1
+search ajaxsave.php $1
+search ajaxsignup.php $1
+search connect.php $1
+search construction.php $1
+search echo.username.php $1
+search forgot.php $1
+search greet.php $1
+search index.php $1
+search load.php $1
+search login.php $1
+search logout.php $1
+search main.php $1
+search postaccount.php $1
+search postforgot.php $1
+search postlogin.php $1
+search postsignup.php $1
+search set.php $1
+search signup.php $1
+search cli/index.php $1
+search Client/cmenu.css $1
+search Client/cmenu.js $1
+search Client/form.css $1
+search Client/Help.html $1
+search Client/main.css $1
+search Client/popup.js $1
+search Client/Form/AddLink.html $1
+search Client/Form/AddParadigm.html $1
+search Client/Form/AutoLink.html $1
+search Client/Form/Edit.html $1
+search Client/Form/form.css $1
+search Client/Form/RemParadigm.html $1
+search Client/Form/Search.html $1
+search Client/Form/SelParadigm.html $1
+search converter/index.html $1
+search converter/main.css $1
+search converter/minimal.css $1
+search converter/username.php $1
+search Client/menu $1
+search Client/footer $1
+search Client/links $1

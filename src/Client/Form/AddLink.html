@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<?php include("../../config.php");?>
+<link rel="stylesheet" type="text/css" href="form.css">
+<form>
+  <legend>&nbsp;</legend>
+  <fieldset>
+    <input placeholder="link"/><br>
+    <input placeholder="title"/><br>
+    <input type="submit" /><br>
+    <p>Add this bookmarklet to your bookmarks bar to add a page with the click of a button</p>
+    <p><a draggable="true" href='javascript:var a = document, b = encodeURIComponent(a.location), c = encodeURIComponent(a.title); open("http://<?=$PATH_TO_INDEX?>/Client/Form/AutoLink.html?[\""+b+"\",\""+c+"\"]","","width=10,height=10")'>Save Page</a></p>
+  </fieldset>
+</form>
+<script>
+var form = document.forms[0],
+    storage = JSON.parse(localStorage['Link Saver']),
+    flink = document.querySelectorAll.apply(document,['form fieldset input'])[0],
+    ftitle = document.querySelectorAll.apply(document,['form fieldset input'])[1];
+
+form.onsubmit = function(){
+  var link = flink.value;
+  var title = ftitle.value;
+  storage[storage.Paradigm.key].push({link:link,title:title});
+  localStorage['Link Saver'] = JSON.stringify(storage);
+  return false;
+}
+</script>

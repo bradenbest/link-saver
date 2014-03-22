@@ -1,0 +1,35 @@
+*{
+  margin:0;
+  padding:0
+}
+body{
+  font:16px courier new;
+}
+ul{
+  list-style:none;
+}
+ul li{
+  background:#fff;
+  padding:10px;
+}
+span{
+  color:#555;
+  margin-right:10px;
+}
+a{
+  color:#00c;
+  text-decoration:none;
+}
+a.list{
+  color:#000;
+  text-decoration:none;
+}
+a:hover{
+  text-decoration:underline;
+}
+.fav{
+  position:relative;
+  top:3px;
+  height:15px;
+  margin-right:5px;
+}

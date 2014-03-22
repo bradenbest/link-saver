@@ -1,0 +1,17 @@
+<script>
+(function(){
+  var storage = JSON.parse(localStorage['Link Saver']);
+  var item = JSON.parse(decodeURIComponent(location.search.replace('?','')));
+  var paradigm = storage[storage.Paradigm.key];
+  if(!item[0]){
+    window.close()
+    return false;
+  }
+  var link = {};
+  link.link = item[0];
+  link.title = item[1] || 'Untitled';
+  paradigm.push(link);
+  localStorage['Link Saver'] = JSON.stringify(storage);
+  window.close();
+})();
+</script>

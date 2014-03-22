@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="form.css">
+<form>
+  <legend>&nbsp;</legend>
+  <fieldset>
+    <input placeholder="Paradigm"/><br>
+    <input type="submit" /><br>
+  </fieldset>
+</form>
+<script>
+var form = document.forms[0],
+    storage = JSON.parse(localStorage['Link Saver']),
+    fpar = document.querySelector.apply(document,['form fieldset input']);
+
+form.onsubmit = function(){
+  var pname = fpar.value;
+  for(var i in storage){
+    if(i === pname){
+      alert('Cannot use this name. It already exists or is reserved');
+      return false;
+    }
+  }
+  storage[pname] = [];
+  storage.Paradigm.list.push(pname);
+  storage.Paradigm.key = pname;
+  localStorage['Link Saver'] = JSON.stringify(storage);
+  return false;
+}
+</script>
