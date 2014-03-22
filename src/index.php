@@ -4,6 +4,8 @@
 session_start();
 include("connect.php");
 
+$DISPLAY_HEADER_MESSAGE = 0;
+
 echo "<!DOCTYPE html>";
 echo "<title>Link Saver</title>";
 echo "<style>body{background:#ccc;}</style>";
@@ -75,7 +77,9 @@ if($logged_in){ // user is logged in
   echo "<script src='http://code.jquery.com/jquery-2.0.0.min.js'></script>";
   echo "<script>var form = document.forms[0];form.onsubmit = function(){\$.ajax({type:'POST',url:'ajaxlogin.php',data:{name:form[0].value,pass:form[1].value}}).done(function(response){if(response !== 'failed'){\$('#greeter').fadeOut(180);setTimeout(function(){location.reload()},200);}else{alert('Bad Login');}});return false;}</script>";
   echo "</div>";
-  echo "<div class=\"header_notice\">This is an old version. The latest version can be found <a href=\"http://bradenbest.com/ls\">Here</a>. All accounts have been moved over there, so to use this version, you'll have to create another account.</div>";
+  if($DISPLAY_HEADER_MESSAGE){
+    echo "<div class=\"header_notice\">This is an old version. The latest version can be found <a href=\"http://bradenbest.com/ls\">Here</a>. All accounts have been moved over there, so to use this version, you'll have to create another account.</div>";
+  }
   echo "<style>.header_notice{position:absolute;padding:10px 0;text-align:center;left:0;top:0;background:#fff;border-bottom:1px solid #aaa;width:100%;box-shadow:#aaa 0 1px;font:16px \"Courier New\";}</style>";
 }
 ?>
