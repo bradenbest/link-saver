@@ -2,6 +2,11 @@
 
 The Link Saver is a project I made to replace bookmarks and provide a clean UI instead. Cause in my opinion, browser bookmark systems suck.
 
+![](showcase.png)
+![](showcase2.png)
+![](showcase3.png)
+![](showcase4.png)
+
 ## What's new
 
 This version is a major improvement over the `1.x` versions. This begins the `2.x` branch of link saver because the data storage method was overhauled from the ground up to use JSON, meaning it is incompatible and thus, under semantic versioning, it gets a new major version.
