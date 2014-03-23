@@ -6,6 +6,7 @@ The Link Saver is a project I made to replace bookmarks and provide a clean UI i
 ![](showcase2.png)
 ![](showcase3.png)
 ![](showcase4.png)
+
 ![](showcase5.png)
 ![](showcase6.png)
 
