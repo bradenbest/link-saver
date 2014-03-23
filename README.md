@@ -12,17 +12,17 @@ In terms of quality, I think version 5.0.0 is more or less on the same level as 
 
 Here's some screenshots:
 
-![](showcase.png)
+![](screenshots/showcase.png)
 
-![](showcase2.png)
+![](screenshots/showcase2.png)
 
-![](showcase3.png)
+![](screenshots/showcase3.png)
 
-![](showcase4.png)
+![](screenshots/showcase4.png)
 
-![](showcase5.png)
+![](screenshots/showcase5.png)
 
-![](showcase6.png)
+![](screenshots/showcase6.png)
 
 ### Setup
 
@@ -70,15 +70,15 @@ It is very lightweight, because all it is, is a text area and a few buttons. Its
 
 Thanks to [Cyberdevil](cyberdevil.newgrounds.com) for suggesting this app in the first place.
 
-![](showcase7.png)
+![](screenshots/showcase7.png)
 
-![](showcase8.png)
+![](screenshots/showcase8.png)
 
-![](showcase9.png)
+![](screenshots/showcase9.png)
 
-![](showcase10.png)
+![](screenshots/showcase10.png)
 
-![](showcase11.png)
+![](screenshots/showcase11.png)
 
 ### Features
 
@@ -111,13 +111,13 @@ Here is an example of a few links:
 
 This will render like so:
 
-![](example.png)
+![](screenshots/example.png)
 
 ## Cli
 
 This is a wrapper for the Link Saver App (documented in src/Client/Help.html) that uses a command-line interface. 
 
-![](showcase12.png)
+![](screenshots/showcase12.png)
 
 ### Features
 
