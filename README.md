@@ -10,6 +10,10 @@ I mean, the app works great! I use it daily. It just has some quirks.
 
 In terms of quality, I think version 5.0.0 is more or less on the same level as 4.1.0. It's just has a prettier UI and some other changes.
 
+Here's some screenshots:
+
+![](showcase.png)
+
 ### Setup
 
 1. create a database, and import Link_Saver.sql into it
@@ -44,8 +48,7 @@ Then you've successfully set it up.
 
 * Email verification system is broken, so I disabled the "un-verified" access block. (low priority)
 * Does not properly utilize MySQL, and still just saves a JSON string. (wontfix)
-* ~~Has a ton of absolute URL paths to ls.bradenbest.com~~
-  * Fixed
+* I just found out that the postcap.php page is nonexistent, so the captcha form fails to complete
 
 ## Link Converter
 
