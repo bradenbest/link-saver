@@ -1,4 +1,4 @@
-<?php include("config.php");?>
+<?php include("../config.php");?>
 
 <link rel="stylesheet" type="text/css" href="main.css">
 <title>Link Converter</title>

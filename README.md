@@ -14,6 +14,16 @@ Here's some screenshots:
 
 ![](showcase.png)
 
+![](showcase2.png)
+
+![](showcase3.png)
+
+![](showcase4.png)
+
+![](showcase5.png)
+
+![](showcase6.png)
+
 ### Setup
 
 1. create a database, and import Link_Saver.sql into it
@@ -60,6 +70,16 @@ It is very lightweight, because all it is, is a text area and a few buttons. Its
 
 Thanks to [Cyberdevil](cyberdevil.newgrounds.com) for suggesting this app in the first place.
 
+![](showcase7.png)
+
+![](showcase8.png)
+
+![](showcase9.png)
+
+![](showcase10.png)
+
+![](showcase11.png)
+
 ### Features
 
 * small footprint
@@ -96,6 +116,8 @@ This will render like so:
 ## Cli
 
 This is a wrapper for the Link Saver App (documented in src/Client/Help.html) that uses a command-line interface. 
+
+![](showcase12.png)
 
 ### Features
 
