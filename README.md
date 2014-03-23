@@ -4,7 +4,7 @@ The Link Saver is a project I made to replace bookmarks and provide a clean UI i
 
 This was the first version. It's horrible. Please don't use it.
 
-![](showcase.png)
+![](./showcase.png)
 
 ## Why is this version horrible?
 
@@ -54,3 +54,4 @@ Not to mention, if I remember correctly, the [DFE](http://www.urbandictionary.co
 Also, I totally forgot, this version didn't have "paradigms" yet. So the next version, version 1.1.0, is the one that's even more horrible and cluttered.
 sometitle
 
+http://somesite.com/somepath
