@@ -9,7 +9,7 @@
 <script>
 showInfo = function(string){document.querySelector.apply(document,['#info']).innerHTML = string;};
 </script>
-<div menu onmouseout="showInfo('Hover over a tool to see more info about it<br><br>Note: For the best possible user experience, use a <a href=\'http://en.wikipedia.org/wiki/List_of_web_browsers#WebKit-based\' target=\'_BLANK\'>Webkit-based</a> Browser.<p>Note: There is a newer version that uses a login system <a href=\'http://bradenbest.com/Linksaver\'>here</a></p>')">
+<div menu onmouseout="showInfo('Hover over a tool to see more info about it')">
     <ul>
         <li><input type="button" onclick="windowPopup('Search.html',300,200)" value="Search in new window" onmouseover="showInfo('Know the name of a link but can\'t find what paradigm it\'s in? Use this tool to find it.')"></li>
         <li><input type="button" onclick="Popup('Search.html',300,200)" value="Search" onmouseover="showInfo('Know the name of a link but can\'t find what paradigm it\'s in? Use this tool to find it.')"></li>
@@ -19,7 +19,7 @@ showInfo = function(string){document.querySelector.apply(document,['#info']).inn
         <li><input type="button" onclick="Popup('Paradigm.html?method=remove',300,innerHeight-100)" value="Remove Paradigm" onmouseover="showInfo('Use this tool to delete a specified paradigm and all of its associated data.')"></li>
         <li><input type="button" onclick="Popup('Backup.html',300,270)" value="Backup and Restore" onmouseover="showInfo('Use this tool to backup your data or restore a backup if you have one.')"></li>
         <li><input type="button" onclick="Popup('Settings.html')" value="Settings" onmouseover="showInfo('Use this tool to change settings and preferences.')"></li>
-        <li><div id="info">Hover over a tool to see more info about it<br><br>Note: For the best possible user experience, use a <a href="http://en.wikipedia.org/wiki/List_of_web_browsers#WebKit-based">Webkit-based</a> Browser.<p>Note: There is a newer version that uses a login system <a href="http://bradenbest.com/Linksaver">here</a></p></div></li>
+        <li><div id="info">Hover over a tool to see more info about it</div></li>
     </ul>
 </div>
 <div container><noscript>You appear to have JavaScript disabled. If you want to use this WebApp, you must enable JavaScript.</noscript></div>

@@ -2,6 +2,13 @@
 
 The Link Saver is a project I made to replace bookmarks and provide a clean UI instead. Cause in my opinion, browser bookmark systems suck.
 
+![](showcase.png)
+![](showcase2.png)
+![](showcase3.png)
+![](showcase4.png)
+![](showcase5.png)
+![](showcase6.png)
+
 ## Version 4
 
 I changed the data model yet again (seems like that was the **only** thing I was improving)
