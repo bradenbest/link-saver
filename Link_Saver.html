@@ -70,7 +70,7 @@ SETFLAG=function(flag){//defined here because I keep getting errors with it :/
 	<div id=toprow></div><br>
 	<div id=div></div>
 	<div id=loadtxt></div><!-- says Loading... when ONLOADWRITE is running-->
-    <p>Developer messages go here</p>
+    <!--<p>Developer messages go here</p>-->
 </div>
 <div id=center></div><!--Invisible div the same width as wrapper used to center it via JS-->
 <script>
@@ -762,9 +762,9 @@ onload=function(){
 				div.innerHTML+='No description has been set for this paradigm. <a href="javascript:SETDESC();void(0)">Set one?</a>'+dismiss
 			}
 		}
-		if(!navigator.appVersion.match(/Webkit/gi)){//if not a webkit browser, then this will return true
-			document.getElementById('div').innerHTML+='<hr>This app is very buggy in Firefox. Use it in a <a href="http://en.wikipedia.org/wiki/List_of_web_browsers#WebKit-based">webkit</a> browser'
-		}
+		//if(!navigator.appVersion.match(/Webkit/gi)){//if not a webkit browser, then this will return true
+			//document.getElementById('div').innerHTML+='<hr>This app is very buggy in Firefox. Use it in a <a href="http://en.wikipedia.org/wiki/List_of_web_browsers#WebKit-based">webkit</a> browser'
+		//}
 		div.style.display='block'//Optimization for write speed
 		//as an example, this reduces time for [Show all] on a paradigm with 25 links from 600ms to 228ms
 		//That is 38% of 600; a 263.15% improvement
