@@ -1,18 +1,19 @@
 <?php include("../config.php");?>
 
+<link rel="stylesheet" type="text/css" href="css/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="main.css">
 <title>Link Converter</title>
 <center>
-<textarea id="text" placeholder="Paste links here, seperated by lines"></textarea>
-  <button id="convert">Convert</button>
-  <button id="exportbtn">Export</button>
-  <button id="html" style="display:none;">Generate HTML</button>
-  <button id="json" style="display:none;">Generate JSON</button>
-  <button id="xml" style="display:none;">Generate XML</button>
-  <button id="linksaver" style="display:none;">Export To Link Saver</button>
-  <button id="settings">Settings</button>
+<textarea id="text" class="form-control" placeholder="Paste links here, seperated by lines"></textarea>
+  <button id="convert"   class="btn btn-default">Convert</button>
+  <button id="exportbtn" class="btn btn-default">Export</button>
+  <button id="html" class="btn btn-default" style="display:none;">Generate HTML</button>
+  <button id="json" class="btn btn-default" style="display:none;">Generate JSON</button>
+  <button id="xml"  class="btn btn-default" style="display:none;">Generate XML</button>
+  <button id="linksaver" class="btn btn-default" style="display:none;">Export To Link Saver</button>
+  <button id="settings"  class="btn btn-default">Settings</button>
 </center>
-<ul id="out"></ul>
+<ul class="list-group" id="out"></ul>
 <script type="text/javascript">
 /*Start Storage*/
 var storage;
@@ -65,6 +66,7 @@ function convertLinks(){
     if(links[i] !== ''){
       var data = parseLine(links[i]);
       var item = document.createElement('li');
+      item.className = "list-group list-group-item";
       var fav = '<img class="fav" src="'+getFavicon(data[0])+'">';
       item.innerHTML = '<span>'+(++count)+'</span> '+(storage.renderFavicons?(fav):(''))+' <a class="list" href="'+data[0]+'" target="_blank">'+data[1]+'</a>';
       out.appendChild(item);
@@ -109,7 +111,7 @@ convert.onclick = convertLinks;
 html.onclick = function(){
   convertLinks();
   var buffer = '<link rel="stylesheet" type="text/css" href="http://<?=$PATH_TO_INDEX?>/converter/minimal.css"><ul>'+out.innerHTML+'</ul>';
-  out.innerHTML = '<center><textarea id="_txt">'+buffer+'</textarea><br><a target="_blank" href="data:text/html;,'+escape(buffer)+'">Permanent link</a></center>';
+  out.innerHTML = '<center><textarea id="_txt" class="form-control">'+buffer+'</textarea><br><a target="_blank" href="data:text/html;,'+escape(buffer)+'">Permanent link</a></center>';
   _txt.focus();
   _txt.select();
   hideButtons();
@@ -124,7 +126,7 @@ json.onclick = function(){
         data.push({link:_data[0],title:_data[1]});
     }
   }
-  out.innerHTML = '<center><textarea id="tout">'+JSON.stringify(data)+'</textarea>'
+  out.innerHTML = '<center><textarea id="tout" class="form-control">'+JSON.stringify(data)+'</textarea>'
   tout.focus();
   tout.select();
   hideButtons();
@@ -141,7 +143,7 @@ xml.onclick = function(){
   }
   data += '</List>';
   data = data.replace(/\&/g,'&amp;');
-  out.innerHTML = '<center><textarea id="tout">'+data.replace(/\&/g,'&amp;')+'</textarea><br><a target="_blank" href="data:text/xml;,'+escape(data)+'">Permanent Link</a></center>';
+  out.innerHTML = '<center><textarea id="tout" class="form-control">'+data.replace(/\&/g,'&amp;')+'</textarea><br><a target="_blank" href="data:text/xml;,'+escape(data)+'">Permanent Link</a></center>';
   tout.focus();
   tout.select();
   hideButtons();
@@ -197,7 +199,7 @@ function CheckBox(container,label,param){
 settings.onclick = function(){
   var _settings = document.createElement('div');
   _settings.style.margin = '0 auto';
-  _settings.style.width = '300px';
+  _settings.style.width = '30%';
   out.innerHTML = '';
   out.appendChild(_settings);
   
